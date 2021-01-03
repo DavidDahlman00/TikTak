@@ -8,10 +8,11 @@
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
-  
+
 
     @IBOutlet weak var pickerData: UIPickerView!
     
+    @IBOutlet weak var labelText: UILabel!
     private var gameDifficulty: [String] = [String]()
     
     override func viewDidLoad() {
@@ -20,8 +21,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         gameDifficulty =  ["Hard","Normal","Easy"]
     }
     
+
+
     @IBAction func startButton(_ sender: UIButton) {
+        print("tape")
+      
+        
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "goToResult"{
+            let destinationVC = segue.destination as! GameViewController
+            destinationVC.gameText.text = "tested"
+            
+        }
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

@@ -20,40 +20,42 @@
                                 <rect key="frame" x="10" y="54" width="394" height="798"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticTacImage" translatesAutoresizingMaskIntoConstraints="NO" id="fSr-pS-5fP">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="363.5"/>
+                                        <rect key="frame" x="17" y="0.0" width="360.5" height="363.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="363.5" id="g88-or-pNx"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ElS-9a-mC5">
-                                        <rect key="frame" x="37" y="447.5" width="320" height="236.5"/>
+                                        <rect key="frame" x="37" y="447.5" width="320" height="350.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2d-a7-4uC">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="label" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2d-a7-4uC">
                                                 <rect key="frame" x="10" y="0.0" width="300" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" restorationIdentifier="selectPicker" translatesAutoresizingMaskIntoConstraints="NO" id="ccM-1i-pzU">
-                                                <rect key="frame" x="0.0" y="21" width="320" height="216"/>
+                                            <pickerView contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="selectPicker" translatesAutoresizingMaskIntoConstraints="NO" id="ccM-1i-pzU">
+                                                <rect key="frame" x="0.0" y="20.5" width="320" height="300"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="mgs-eg-pJ9"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="CqA-6J-9pn"/>
                                                 </connections>
                                             </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="startButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-Nx-YWc" userLabel="Start">
+                                                <rect key="frame" x="143" y="320.5" width="34" height="30"/>
+                                                <accessibility key="accessibilityConfiguration" label="Start"/>
+                                                <state key="normal" title="Start"/>
+                                                <connections>
+                                                    <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qxg-21-vw9"/>
+                                                    <segue destination="jgO-OB-O7s" kind="presentation" id="GlJ-T4-Tme"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="h2d-a7-4uC" firstAttribute="top" secondItem="ElS-9a-mC5" secondAttribute="top" id="5FM-0f-Wsj"/>
                                             <constraint firstItem="h2d-a7-4uC" firstAttribute="leading" secondItem="ElS-9a-mC5" secondAttribute="leading" constant="10" id="KeD-Mh-n6U"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A68-YN-OTh">
-                                        <rect key="frame" x="174" y="768" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FsY-e0-ByE"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fSr-pS-5fP" firstAttribute="top" secondItem="25f-f5-uKc" secondAttribute="top" id="5BX-cb-Y2W"/>
@@ -70,6 +72,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="labelText" destination="h2d-a7-4uC" id="sRr-I4-fCh"/>
                         <outlet property="pickerData" destination="ccM-1i-pzU" id="Bxv-3e-VrN"/>
                     </connections>
                 </viewController>
@@ -77,9 +80,49 @@
             </objects>
             <point key="canvasLocation" x="13.043478260869566" y="73.660714285714278"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="ZCF-FQ-uDg">
+            <objects>
+                <viewController storyboardIdentifier="gameboard" id="jgO-OB-O7s" customClass="GameViewController" customModule="TikTak" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="11D-Vo-isL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aw-0a-NBh">
+                                <rect key="frame" x="100" y="758" width="214" height="30"/>
+                                <state key="normal" title="Exit"/>
+                                <connections>
+                                    <action selector="exitButton:" destination="jgO-OB-O7s" eventType="touchUpInside" id="3Qv-zE-Pzh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6s-SZ-Sce">
+                                <rect key="frame" x="186" y="410.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hok-Ou-1QU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="o6s-SZ-Sce" firstAttribute="centerY" secondItem="11D-Vo-isL" secondAttribute="centerY" id="CzF-WS-zBu"/>
+                            <constraint firstItem="2aw-0a-NBh" firstAttribute="leading" secondItem="hok-Ou-1QU" secondAttribute="leading" constant="100" id="KLp-lm-Cqn"/>
+                            <constraint firstItem="hok-Ou-1QU" firstAttribute="trailing" secondItem="2aw-0a-NBh" secondAttribute="trailing" constant="100" id="VuI-4K-qKa"/>
+                            <constraint firstItem="o6s-SZ-Sce" firstAttribute="centerX" secondItem="11D-Vo-isL" secondAttribute="centerX" id="dSU-pu-S7s"/>
+                            <constraint firstItem="hok-Ou-1QU" firstAttribute="bottom" secondItem="2aw-0a-NBh" secondAttribute="bottom" constant="20" id="gyO-Vl-edc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gameText" destination="o6s-SZ-Sce" id="bsE-F1-iKr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gMs-9k-HoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1095.6521739130435" y="79.6875"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="ticTacImage" width="1082" height="1080"/>
+        <image name="ticTacImage" width="360.5" height="360"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
