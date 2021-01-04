@@ -13,28 +13,31 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var pickerData: UIPickerView!
     
     @IBOutlet weak var labelText: UILabel!
-    private var gameDifficulty: [String] = [String]()
+    
+    private var gameDifficulty = ["Hard","Normal","Easy"]
+    private let userDefaultRowKey = "defaultsPickerRow"
+    var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        gameDifficulty =  ["Hard","Normal","Easy"]
+       
     }
     
 
 
     @IBAction func startButton(_ sender: UIButton) {
         print("tape")
-      
+        self.performSegue(withIdentifier: "goToGame", sender: self)
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        if segue.identifier == "goToResult"{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToGame" {
             let destinationVC = segue.destination as! GameViewController
-            destinationVC.gameText.text = "tested"
-            
+            destinationVC.difficulty = gameDifficulty[selectedRow]
         }
     }
+   
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -47,6 +50,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        
         return gameDifficulty[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedRow = row
     }
 
 }

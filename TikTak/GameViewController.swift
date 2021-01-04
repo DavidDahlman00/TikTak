@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        gameText.text = "difficulty"
+        gameText.text = difficulty
     }
     
 

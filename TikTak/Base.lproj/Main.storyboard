@@ -47,7 +47,7 @@
                                                 <state key="normal" title="Start"/>
                                                 <connections>
                                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qxg-21-vw9"/>
-                                                    <segue destination="jgO-OB-O7s" kind="presentation" id="GlJ-T4-Tme"/>
+                                                    <segue destination="jgO-OB-O7s" kind="presentation" identifier="goToGame" id="GlJ-T4-Tme"/>
                                                 </connections>
                                             </button>
                                         </subviews>
