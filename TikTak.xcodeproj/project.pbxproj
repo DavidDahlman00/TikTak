@@ -17,7 +17,7 @@
 		510F37DC25965CAF00EE07C1 /* TikTakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F37DB25965CAF00EE07C1 /* TikTakTests.swift */; };
 		510F37E725965CAF00EE07C1 /* TikTakUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510F37E625965CAF00EE07C1 /* TikTakUITests.swift */; };
 		515CD02325A1D2AD00F01759 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515CD02225A1D2AD00F01759 /* GameViewController.swift */; };
-		515CD07725A4586300F01759 /* GameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515CD07625A4586300F01759 /* GameViewCell.swift */; };
+		515CD07F25A6FFE800F01759 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515CD07E25A6FFE800F01759 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 		510F37E625965CAF00EE07C1 /* TikTakUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTakUITests.swift; sourceTree = "<group>"; };
 		510F37E825965CAF00EE07C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		515CD02225A1D2AD00F01759 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		515CD07625A4586300F01759 /* GameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewCell.swift; sourceTree = "<group>"; };
+		515CD07E25A6FFE800F01759 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 				510F37D225965CAF00EE07C1 /* Info.plist */,
 				510F37CA25965CA400EE07C1 /* TikTak.xcdatamodeld */,
 				515CD02225A1D2AD00F01759 /* GameViewController.swift */,
-				515CD07625A4586300F01759 /* GameViewCell.swift */,
+				515CD07E25A6FFE800F01759 /* Game.swift */,
 			);
 			path = TikTak;
 			sourceTree = "<group>";
@@ -268,10 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				515CD02325A1D2AD00F01759 /* GameViewController.swift in Sources */,
+				515CD07F25A6FFE800F01759 /* Game.swift in Sources */,
 				510F37C625965CA400EE07C1 /* ViewController.swift in Sources */,
 				510F37C225965CA400EE07C1 /* AppDelegate.swift in Sources */,
 				510F37C425965CA400EE07C1 /* SceneDelegate.swift in Sources */,
-				515CD07725A4586300F01759 /* GameViewCell.swift in Sources */,
 				510F37CC25965CA400EE07C1 /* TikTak.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
