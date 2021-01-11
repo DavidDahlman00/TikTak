@@ -28,14 +28,23 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ElS-9a-mC5">
                                         <rect key="frame" x="37" y="447.5" width="320" height="350.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="label" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2d-a7-4uC">
-                                                <rect key="frame" x="10" y="0.0" width="300" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y56-xR-l2E">
+                                                <rect key="frame" x="3" y="0.0" width="314.5" height="34"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First players name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dyR-Nr-8WS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="146" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second players Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P9t-17-23g">
+                                                        <rect key="frame" x="146" y="0.0" width="168.5" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                             <pickerView contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="selectPicker" translatesAutoresizingMaskIntoConstraints="NO" id="ccM-1i-pzU">
-                                                <rect key="frame" x="0.0" y="20.5" width="320" height="300"/>
+                                                <rect key="frame" x="0.0" y="34" width="320" height="286.5"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="mgs-eg-pJ9"/>
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="CqA-6J-9pn"/>
@@ -51,10 +60,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="h2d-a7-4uC" firstAttribute="top" secondItem="ElS-9a-mC5" secondAttribute="top" id="5FM-0f-Wsj"/>
-                                            <constraint firstItem="h2d-a7-4uC" firstAttribute="leading" secondItem="ElS-9a-mC5" secondAttribute="leading" constant="10" id="KeD-Mh-n6U"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -72,8 +77,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="labelText" destination="h2d-a7-4uC" id="sRr-I4-fCh"/>
                         <outlet property="pickerData" destination="ccM-1i-pzU" id="Bxv-3e-VrN"/>
+                        <outlet property="player1name" destination="dyR-Nr-8WS" id="xkX-YJ-xvQ"/>
+                        <outlet property="player2name" destination="P9t-17-23g" id="a2y-DV-XMT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,17 +107,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1vZ-Wc-dYC">
                                         <rect key="frame" x="0.0" y="0.0" width="302" height="104"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x.png" translatesAutoresizingMaskIntoConstraints="NO" id="AdS-Df-z6E">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x.png" translatesAutoresizingMaskIntoConstraints="NO" id="AdS-Df-z6E" userLabel="square1">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S03-lP-2uL">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S03-lP-2uL" userLabel="square2">
                                                 <rect key="frame" x="101" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9zN-UP-TDt">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9zN-UP-TDt" userLabel="square3">
                                                 <rect key="frame" x="202" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
@@ -121,17 +127,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="NKb-0o-iV2">
                                         <rect key="frame" x="0.0" y="104" width="302" height="104"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-Nt-Llg">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-Nt-Llg" userLabel="square4">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="o" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-AW-Fdk">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="o" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-AW-Fdk" userLabel="square5">
                                                 <rect key="frame" x="101" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vg0-YE-ioW">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vg0-YE-ioW" userLabel="square6">
                                                 <rect key="frame" x="202" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
@@ -141,17 +147,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-b3-3Gs">
                                         <rect key="frame" x="0.0" y="208" width="302" height="104"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qEx-Sb-f8O">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qEx-Sb-f8O" userLabel="square7">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-Cv-OSk">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Q-Cv-OSk" userLabel="square8">
                                                 <rect key="frame" x="101" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L2u-oe-MIC">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L2u-oe-MIC" userLabel="square9">
                                                 <rect key="frame" x="202" y="0.0" width="100" height="104"/>
                                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <edgeInsets key="layoutMargins" top="1" left="1" bottom="1" right="1"/>
@@ -233,6 +239,17 @@
                     </view>
                     <connections>
                         <outlet property="gameText" destination="o6s-SZ-Sce" id="bsE-F1-iKr"/>
+                        <outlet property="player1label" destination="eul-FE-kMK" id="k4U-l9-UCE"/>
+                        <outlet property="player2label" destination="2az-hK-hu9" id="LSf-ti-O46"/>
+                        <outlet property="square1" destination="AdS-Df-z6E" id="Rhm-9S-d1B"/>
+                        <outlet property="square2" destination="S03-lP-2uL" id="Ph2-h9-7bi"/>
+                        <outlet property="square3" destination="9zN-UP-TDt" id="1HW-4u-fTC"/>
+                        <outlet property="square4" destination="mR5-Nt-Llg" id="21E-sQ-fmR"/>
+                        <outlet property="square5" destination="tUG-AW-Fdk" id="9h5-og-rPF"/>
+                        <outlet property="square6" destination="vg0-YE-ioW" id="rEz-Fr-R7J"/>
+                        <outlet property="square7" destination="qEx-Sb-f8O" id="lrq-No-TWn"/>
+                        <outlet property="square8" destination="Q4Q-Cv-OSk" id="G1r-A7-zQp"/>
+                        <outlet property="square9" destination="L2u-oe-MIC" id="4N0-wO-8rF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMs-9k-HoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
