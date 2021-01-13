@@ -71,45 +71,14 @@ struct Game {
         return emptySquares
     }
     
-    mutating func randomMove() {
+    mutating func randomMove() -> [Int]? {
         let posibleMoves = findEmptySquares()
         if !posibleMoves.isEmpty && winner == "goOnPlay"{
             let choosenMove = posibleMoves.randomElement()
             setPosition(row: choosenMove![0], col: choosenMove![1])
+            return choosenMove
         }
-    }
-    
-    func minmax(game: Game) -> Int {
-        if game.winner == "goOnPlay" {
-            if game.player == 1 {
-                var bestResult = -10
-                for square in findEmptySquares() {
-                    var newGame = game
-                    newGame.setPosition(row: square[0], col: square[1])
-                    let result = minmax(game: newGame)
-                    bestResult = max(result, bestResult)
-                }
-                return bestResult
-            } else{
-                var bestResult = 10
-                for square in findEmptySquares() {
-                    var newGame = game
-                    newGame.setPosition(row: square[0], col: square[1])
-                    let result = minmax(game: newGame)
-                    bestResult = min(result, bestResult)
-                    }
-                return bestResult
-            }
-        } else{
-            switch game.winner {
-            case "player1":
-                return 1
-            case "player2":
-                return -1
-            default:
-                return 0
-            }
-        }
+        return [-1,-1]
     }
 }
     
