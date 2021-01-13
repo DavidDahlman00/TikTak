@@ -37,23 +37,24 @@ class GameViewController: UIViewController {
     
     var madeUpPlayerNames = ["Magnus", "Fabiano", "Liren", "Ian", "Maxime", "Alexander", "Levon", "Wesley", "Teimour", "Anish"]
     
-    var player1Name: String {
-        if nameplayer1 == "" {
-            return  madeUpPlayerNames.randomElement()!
-        }
-        return nameplayer1!
-    }
+    var player1Name: String = ""
     
-    var player2Name: String {
-        if nameplayer2 == "" {
-            return  madeUpPlayerNames.randomElement()!
-        }
-        return nameplayer2!
-    }
+    var player2Name: String = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            if nameplayer1 == "" {
+                player1Name = madeUpPlayerNames.randomElement()!
+            }else{
+                player1Name = nameplayer1!
+            }
+        if nameplayer2 == "" {
+            player2Name = madeUpPlayerNames.randomElement()!
+        }else{
+            player2Name = nameplayer2!
+        }
         
         setNames()
         
@@ -125,11 +126,10 @@ class GameViewController: UIViewController {
         print("Box: \(pos[0]) and \(pos[1]) was clicked")
         if game.getPosition(row: pos[0], col: pos[1]) == 0 {
             print("not clicked")
-            if numPlayers == Optional("1-player") && game.player == 2 {
-              makeComputerMove(game: game)
-            }
+            print(game.move)
+            print(game.player)
+            print(difficulty)
             print(numPlayers)
-            makeComputerMove(game: game)
             let selectedBox = getBox(from: sender.name ?? "")
             if game.player == 1 {
                 selectedBox.image = #imageLiteral(resourceName: "x.png")
@@ -138,7 +138,9 @@ class GameViewController: UIViewController {
                 selectedBox.image = #imageLiteral(resourceName: "o")
             }
             game.setPosition(row: pos[0], col: pos[1])
-            
+            if numPlayers == Optional("1-player") && game.player == 2 && game.move < 9{
+                makeComputerMove()
+            }
             
         }
         print(game.winner)
@@ -191,10 +193,54 @@ class GameViewController: UIViewController {
         }
     }
     
-    func makeComputerMove(game: Game) {
-        var move = self.game.randomMove()
-        print(" \(move![0]) and \(move![1])")
+    func findBoxByPosition(pos: [Int]) -> UIImageView {
+        
+        switch pos {
+        case [0,0]:
+            return box1
+        case [0,1]:
+            return box2
+        case [0,2]:
+            return box3
+        case [1,0]:
+            return box4
+        case [1,1]:
+            return box5
+        case [1,2]:
+            return box6
+        case [2,0]:
+            return box7
+        case [2,1]:
+            return box8
+        case [2,2]:
+            return box9
+        default:
+            return box9
+        }
+    }
+    
+    func makeComputerMove() {
+        let move: [Int]
+        if difficulty == "Easy" {
+            move = game.findEmptySquares().randomElement()!
+        }
+        else if difficulty == "Normal" {
+            let number = Int.random(in: 1...10)
+            if number > 3 {
+                move = computerBestMove(game: game)
+            }else{
+                move = game.findEmptySquares().randomElement()!
+            }
+        }else{
+            move = computerBestMove(game: game)
+        }
+        
+        let selectedBox = findBoxByPosition(pos: move)
+        selectedBox.image = #imageLiteral(resourceName: "o")
+        game.setPosition(row: move[0], col: move[1])
+        print(" \(move[0]) and \(move[1])")
         print("############")
+        
         
     }
     

@@ -20,8 +20,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     private var gameDifficulty = ["Hard","Normal","Easy"]
     private var numberOfPlayers = ["1-player", "2-players"]
     private let userDefaultRowKey = "defaultsPickerRow"
-    var selectedRow = 0
-    
+    var selectedRowDifficulty = 0
+    var selectedRowPlayer = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         player1name.text = ""
@@ -40,8 +40,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToGame" {
             let destinationVC = segue.destination as! GameViewController
-            destinationVC.difficulty = gameDifficulty[selectedRow]
-            destinationVC.numPlayers = numberOfPlayers[selectedRow]
+            destinationVC.difficulty = gameDifficulty[selectedRowDifficulty]
+            destinationVC.numPlayers = numberOfPlayers[selectedRowPlayer]
             destinationVC.nameplayer1 = player1name.text
             destinationVC.nameplayer2 = player2name.text
             
@@ -72,7 +72,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRow = row
+        if component == 0 {
+            selectedRowPlayer = row
+        }else{
+            selectedRowDifficulty = row
+        }
+        
     }
 
 }
