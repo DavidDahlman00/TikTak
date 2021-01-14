@@ -21,8 +21,11 @@ class GameViewController: UIViewController {
     var game = Game()
     var madeUpPlayerNames = ["Magnus", "Fabiano", "Liren", "Ian", "Maxime", "Alexander", "Levon", "Wesley", "Teimour", "Anish"]
     
+    var iconList = [#imageLiteral(resourceName: "iconfinder_Grandfather_3231121"), #imageLiteral(resourceName: "iconfinder_Daughter_3231126"), #imageLiteral(resourceName: "iconfinder_Brother_3231124-3"), #imageLiteral(resourceName: "iconfinder_Grandmother_3231123"), #imageLiteral(resourceName: "iconfinder_Uncle_3231127")]
     var player1Name: String = ""
     var player2Name: String = ""
+    var icon1 = #imageLiteral(resourceName: "iconfinder_Grandfather_3231121")
+    var icon2 = #imageLiteral(resourceName: "iconfinder_Grandfather_3231121")
     
     @IBOutlet weak var player1label: UILabel!
     @IBOutlet weak var player2label: UILabel!
@@ -54,7 +57,9 @@ class GameViewController: UIViewController {
         }else{
             player2Name = nameplayer2!
         }
-        
+        let randomIndex = makeListIndex()
+        icon1 = iconList[randomIndex[0]]
+        icon2 = iconList[randomIndex[1]]
         setNames()
         createTap(on: box1, type: .one)
         createTap(on: box2, type: .two)
@@ -68,6 +73,11 @@ class GameViewController: UIViewController {
         
       
     }
+    
+    func makeListIndex() -> [Int] {
+        return (0...1).map { _ in .random(in: 0...4) }
+    }
+    
     func setNames()  {
         drawlabel.text = "draw: \(scoreDraw)"
         player1label.text = "\(player1Name): \(scorePlayer1)"
@@ -123,10 +133,10 @@ class GameViewController: UIViewController {
 
             let selectedBox = getBox(from: sender.name ?? "")
             if game.player == 1 {
-                selectedBox.image = #imageLiteral(resourceName: "x.png")
+                selectedBox.image = icon1
                 
             } else {
-                selectedBox.image = #imageLiteral(resourceName: "o")
+                selectedBox.image = icon2
             }
             game.setPosition(row: pos[0], col: pos[1])
             if numPlayers == Optional("1-player") && game.player == 2 && game.winner == "goOnPlay"{
@@ -232,7 +242,7 @@ class GameViewController: UIViewController {
         }
         
         let selectedBox = findBoxByPosition(pos: move)
-        selectedBox.image = #imageLiteral(resourceName: "o")
+        selectedBox.image = icon2
         game.setPosition(row: move[0], col: move[1])
        
     }
