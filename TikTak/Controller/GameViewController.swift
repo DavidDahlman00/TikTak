@@ -19,7 +19,10 @@ class GameViewController: UIViewController {
     var scoreDraw: Int = 0
     var boxClickedReturn = "none"
     var game = Game()
+    var madeUpPlayerNames = ["Magnus", "Fabiano", "Liren", "Ian", "Maxime", "Alexander", "Levon", "Wesley", "Teimour", "Anish"]
     
+    var player1Name: String = ""
+    var player2Name: String = ""
     
     @IBOutlet weak var player1label: UILabel!
     @IBOutlet weak var player2label: UILabel!
@@ -35,11 +38,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var box8: UIImageView!
     @IBOutlet weak var box9: UIImageView!
     
-    var madeUpPlayerNames = ["Magnus", "Fabiano", "Liren", "Ian", "Maxime", "Alexander", "Levon", "Wesley", "Teimour", "Anish"]
-    
-    var player1Name: String = ""
-    
-    var player2Name: String = ""
+
     
     
     override func viewDidLoad() {
@@ -57,9 +56,6 @@ class GameViewController: UIViewController {
         }
         
         setNames()
-        
-
-       
         createTap(on: box1, type: .one)
         createTap(on: box2, type: .two)
         createTap(on: box3, type: .three)
@@ -98,7 +94,6 @@ class GameViewController: UIViewController {
     }
     
     @objc func boxClicked(_ sender: UITapGestureRecognizer) {
-        print("Box: \(sender.name ?? "test only") was clicked")
         var pos: [Int]{
             switch sender.name {
             case "one":
@@ -123,13 +118,9 @@ class GameViewController: UIViewController {
                 return [-1,-1]
             }
         }
-        print("Box: \(pos[0]) and \(pos[1]) was clicked")
+     
         if game.getPosition(row: pos[0], col: pos[1]) == 0 {
-            print("not clicked")
-            print(game.move)
-            print(game.player)
-            print(difficulty)
-            print(numPlayers)
+
             let selectedBox = getBox(from: sender.name ?? "")
             if game.player == 1 {
                 selectedBox.image = #imageLiteral(resourceName: "x.png")
@@ -143,9 +134,7 @@ class GameViewController: UIViewController {
             }
             
         }
-        print(game.winner)
-        print(difficulty)
-        print(numPlayers)
+
         if game.winner != "goOnPlay" {
            var seriouslyWhyDefaultInSwitchStatments = 0
             switch game.winner {
@@ -159,8 +148,7 @@ class GameViewController: UIViewController {
                 seriouslyWhyDefaultInSwitchStatments += 1
             }
            setNames()
-//            clearBoxes()
-//            game = Game()
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 self.newGame()
             }
@@ -246,12 +234,11 @@ class GameViewController: UIViewController {
         let selectedBox = findBoxByPosition(pos: move)
         selectedBox.image = #imageLiteral(resourceName: "o")
         game.setPosition(row: move[0], col: move[1])
-        print(" \(move[0]) and \(move[1])")
-        print("############")
-        
-        
+       
     }
     
+    
+    //#### functions that should be in modell but has to be elsewhere because of circle recursion. Sory for bad code ####
     func minmax(game: Game) -> Int {
         if game.winner == "goOnPlay" {
             if game.player == 1 {
@@ -312,12 +299,6 @@ class GameViewController: UIViewController {
         return bestMove.randomElement()!
     }
 
-//    @IBAction func actionButton(_ sender: Any) {
-//        (sender as AnyObject).setImage(UIImage(named: "x.png"), for: UIControl.State())
-//    }
-//
-    
-  
     @IBAction func exitFunc(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
