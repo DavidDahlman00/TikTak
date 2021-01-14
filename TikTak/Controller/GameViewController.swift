@@ -138,7 +138,7 @@ class GameViewController: UIViewController {
                 selectedBox.image = #imageLiteral(resourceName: "o")
             }
             game.setPosition(row: pos[0], col: pos[1])
-            if numPlayers == Optional("1-player") && game.player == 2 && game.move < 9{
+            if numPlayers == Optional("1-player") && game.player == 2 && game.winner == "goOnPlay"{
                 makeComputerMove()
             }
             
@@ -147,7 +147,7 @@ class GameViewController: UIViewController {
         print(difficulty)
         print(numPlayers)
         if game.winner != "goOnPlay" {
-           var seriouslyWhyDefault = 0
+           var seriouslyWhyDefaultInSwitchStatments = 0
             switch game.winner {
             case "player1":
                 scorePlayer1 += 1
@@ -156,12 +156,20 @@ class GameViewController: UIViewController {
             case "draw":
                 scoreDraw += 1
             default:
-                seriouslyWhyDefault += 1
+                seriouslyWhyDefaultInSwitchStatments += 1
             }
-            setNames()
-            clearBoxes()
-            game = Game()
+           setNames()
+//            clearBoxes()
+//            game = Game()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.newGame()
+            }
         }
+    }
+    
+    func newGame() {
+        clearBoxes()
+        game = Game()
     }
     
     enum Box: String {

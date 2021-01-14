@@ -105,16 +105,14 @@
 		510F37C025965CA400EE07C1 /* TikTak */ = {
 			isa = PBXGroup;
 			children = (
+				51434CE925B03025009E4886 /* View */,
+				51434CE825B02FD0009E4886 /* Controller */,
+				51434CE725B02FBC009E4886 /* Model */,
 				510F37C125965CA400EE07C1 /* AppDelegate.swift */,
 				510F37C325965CA400EE07C1 /* SceneDelegate.swift */,
-				510F37C525965CA400EE07C1 /* ViewController.swift */,
-				510F37C725965CA400EE07C1 /* Main.storyboard */,
 				510F37CD25965CAF00EE07C1 /* Assets.xcassets */,
-				510F37CF25965CAF00EE07C1 /* LaunchScreen.storyboard */,
 				510F37D225965CAF00EE07C1 /* Info.plist */,
 				510F37CA25965CA400EE07C1 /* TikTak.xcdatamodeld */,
-				515CD02225A1D2AD00F01759 /* GameViewController.swift */,
-				515CD07E25A6FFE800F01759 /* Game.swift */,
 			);
 			path = TikTak;
 			sourceTree = "<group>";
@@ -135,6 +133,32 @@
 				510F37E825965CAF00EE07C1 /* Info.plist */,
 			);
 			path = TikTakUITests;
+			sourceTree = "<group>";
+		};
+		51434CE725B02FBC009E4886 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				515CD07E25A6FFE800F01759 /* Game.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		51434CE825B02FD0009E4886 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				510F37C525965CA400EE07C1 /* ViewController.swift */,
+				515CD02225A1D2AD00F01759 /* GameViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		51434CE925B03025009E4886 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				510F37C725965CA400EE07C1 /* Main.storyboard */,
+				510F37CF25965CAF00EE07C1 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
