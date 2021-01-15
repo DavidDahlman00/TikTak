@@ -47,20 +47,23 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let randomPlayerIndex = makeListIndex(number: 9)
+        let randomPlayerIndex1 = [0,1,2,3,4,5,6,7,8,9].randomElement()
+        let randomPlayerIndex2 = [0,1,2,3,4,5,6,7,8,9].filter { $0 != randomPlayerIndex1 }.randomElement()
             if nameplayer1 == "" {
-                player1Name = madeUpPlayerNames[randomPlayerIndex[0]]
+                player1Name = madeUpPlayerNames[randomPlayerIndex1!]
             }else{
                 player1Name = nameplayer1!
             }
         if nameplayer2 == "" {
-            player2Name = madeUpPlayerNames[randomPlayerIndex[1]]
+            player2Name = madeUpPlayerNames[randomPlayerIndex2!!]
         }else{
             player2Name = nameplayer2!
         }
-        let randomIconIndex = makeListIndex(number: 4)
-        icon1 = iconList[randomIconIndex[0]]
-        icon2 = iconList[randomIconIndex[1]]
+
+        let randomIconIndex1 = [0,1,2,3,4].randomElement()
+        let randomIconIndex2 = [0,1,2,3,4].filter { $0 != randomIconIndex1 }.randomElement()
+        icon1 = iconList[randomIconIndex1!]
+        icon2 = iconList[randomIconIndex2!!]
         setNames()
         createTap(on: box1, type: .one)
         createTap(on: box2, type: .two)
@@ -74,10 +77,7 @@ class GameViewController: UIViewController {
         
       
     }
-    
-    func makeListIndex(number: Int) -> [Int] {
-        return (0...1).map { _ in .random(in: 0...number) }
-    }
+
     
     func setNames()  {
         drawlabel.text = "draw: \(scoreDraw)"
@@ -132,6 +132,8 @@ class GameViewController: UIViewController {
      
         if game.getPosition(row: pos[0], col: pos[1]) == 0 {
 
+            print(difficulty ?? "error")
+            print(numPlayers ?? "error")
             let selectedBox = getBox(from: sender.name ?? "")
             if game.player == 1 {
                 selectedBox.image = icon1
