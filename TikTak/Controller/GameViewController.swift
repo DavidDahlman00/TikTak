@@ -27,6 +27,9 @@ class GameViewController: UIViewController {
     var icon1 = #imageLiteral(resourceName: "iconfinder_Grandfather_3231121")
     var icon2 = #imageLiteral(resourceName: "iconfinder_Grandfather_3231121")
     
+    
+    @IBOutlet weak var playertogo: UILabel!
+    
     @IBOutlet weak var player1label: UILabel!
     @IBOutlet weak var player2label: UILabel!
     
@@ -65,6 +68,7 @@ class GameViewController: UIViewController {
         icon1 = iconList[randomIconIndex1!]
         icon2 = iconList[randomIconIndex2!!]
         setNames()
+        setPlayerToGo(game: game)
         createTap(on: box1, type: .one)
         createTap(on: box2, type: .two)
         createTap(on: box3, type: .three)
@@ -79,10 +83,19 @@ class GameViewController: UIViewController {
     }
 
     
+    
     func setNames()  {
         drawlabel.text = "draw: \(scoreDraw)"
         player1label.text = "\(player1Name): \(scorePlayer1)"
         player2label.text = "\(player2Name): \(scorePlayer2)"
+    }
+    
+    func setPlayerToGo(game: Game) {
+        if game.player == 1 {
+            playertogo.text = "\(player1Name) to Go!"
+        }else{
+            playertogo.text = "\(player2Name) to Go!"
+        }
     }
     
     func clearBoxes()  {
@@ -142,8 +155,10 @@ class GameViewController: UIViewController {
                 selectedBox.image = icon2
             }
             game.setPosition(row: pos[0], col: pos[1])
+            setPlayerToGo(game: game)
             if numPlayers == Optional("1-player") && game.player == 2 && game.winner == "goOnPlay"{
                 makeFasterComputerMove()
+                setPlayerToGo(game: game)
             }
             
         }
@@ -171,6 +186,7 @@ class GameViewController: UIViewController {
     func newGame() {
         clearBoxes()
         game = Game()
+        setPlayerToGo(game: game)
     }
     
     enum Box: String {

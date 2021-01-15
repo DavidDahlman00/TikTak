@@ -111,22 +111,28 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="xZ6-zf-5nq">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="268.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVG-fe-XbU">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eul-FE-kMK">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="67" width="414" height="67.5"/>
                                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svW-1v-Bm1">
-                                                <rect key="frame" x="0.0" y="89.5" width="414" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="134.5" width="414" height="67"/>
                                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2az-hK-hu9">
-                                                <rect key="frame" x="0.0" y="179" width="414" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="201.5" width="414" height="67"/>
                                                 <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -224,6 +230,7 @@
                         <outlet property="drawlabel" destination="svW-1v-Bm1" id="bJy-8g-YGw"/>
                         <outlet property="player1label" destination="eul-FE-kMK" id="k4U-l9-UCE"/>
                         <outlet property="player2label" destination="2az-hK-hu9" id="LSf-ti-O46"/>
+                        <outlet property="playertogo" destination="KVG-fe-XbU" id="omd-Ad-11Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMs-9k-HoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

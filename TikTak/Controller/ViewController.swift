@@ -12,7 +12,6 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
 
     @IBOutlet weak var pickerData: UIPickerView!
     
-    @IBOutlet weak var labelText: UILabel!
     
     @IBOutlet weak var player1name: UITextField!
     @IBOutlet weak var player2name: UITextField!
