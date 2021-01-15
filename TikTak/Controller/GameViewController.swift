@@ -47,19 +47,20 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let randomPlayerIndex = makeListIndex(number: 9)
             if nameplayer1 == "" {
-                player1Name = madeUpPlayerNames.randomElement()!
+                player1Name = madeUpPlayerNames[randomPlayerIndex[0]]
             }else{
                 player1Name = nameplayer1!
             }
         if nameplayer2 == "" {
-            player2Name = madeUpPlayerNames.randomElement()!
+            player2Name = madeUpPlayerNames[randomPlayerIndex[1]]
         }else{
             player2Name = nameplayer2!
         }
-        let randomIndex = makeListIndex()
-        icon1 = iconList[randomIndex[0]]
-        icon2 = iconList[randomIndex[1]]
+        let randomIconIndex = makeListIndex(number: 4)
+        icon1 = iconList[randomIconIndex[0]]
+        icon2 = iconList[randomIconIndex[1]]
         setNames()
         createTap(on: box1, type: .one)
         createTap(on: box2, type: .two)
@@ -74,8 +75,8 @@ class GameViewController: UIViewController {
       
     }
     
-    func makeListIndex() -> [Int] {
-        return (0...1).map { _ in .random(in: 0...4) }
+    func makeListIndex(number: Int) -> [Int] {
+        return (0...1).map { _ in .random(in: 0...number) }
     }
     
     func setNames()  {
@@ -140,7 +141,7 @@ class GameViewController: UIViewController {
             }
             game.setPosition(row: pos[0], col: pos[1])
             if numPlayers == Optional("1-player") && game.player == 2 && game.winner == "goOnPlay"{
-                makeComputerMove()
+                makeFasterComputerMove()
             }
             
         }
@@ -222,6 +223,23 @@ class GameViewController: UIViewController {
             return box9
         default:
             return box9
+        }
+    }
+    
+    func makeFasterComputerMove() {
+        if game.move == 1 {
+            if game.getPosition(row: 1, col: 1) == 0{
+                game.setPosition(row: 1, col: 1)
+                let selectedBox = findBoxByPosition(pos: [1,1])
+                selectedBox.image = icon2
+            }else{
+                let  randomMove = [[0,0], [0,2], [2,0], [2,2]].randomElement()
+                game.setPosition(row:  randomMove![0], col: randomMove![1])
+                let selectedBox = findBoxByPosition(pos: randomMove!)
+                selectedBox.image = icon2
+            }
+        }else{
+            makeComputerMove()
         }
     }
     
