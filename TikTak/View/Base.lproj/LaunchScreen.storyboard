@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticTacImage" translatesAutoresizingMaskIntoConstraints="NO" id="qSh-9C-zgR">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconfinder_Uncle_3231127" translatesAutoresizingMaskIntoConstraints="NO" id="qSh-9C-zgR">
                                 <rect key="frame" x="45" y="276" width="324" height="525"/>
                             </imageView>
                         </subviews>
@@ -36,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ticTacImage" width="360.5" height="360"/>
+        <image name="iconfinder_Uncle_3231127" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

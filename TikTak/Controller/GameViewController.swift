@@ -268,7 +268,7 @@ class GameViewController: UIViewController {
         }
         else if difficulty == "Normal" {
             let number = Int.random(in: 1...10)
-            if number > 3 {
+            if number < 5 + game.move / 2{
                 move = computerBestMove(game: game)
             }else{
                 move = game.findEmptySquares().randomElement()!
